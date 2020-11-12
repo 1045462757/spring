@@ -1,0 +1,42 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:aop="http://www.springframework.org/schema/aop"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--       http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--       http://www.springframework.org/schema/aop-->
+<!--       http://www.springframework.org/schema/aop/spring-aop.xsd-->
+<!--       http://www.springframework.org/schema/context-->
+<!--       http://www.springframework.org/schema/context/spring-context.xsd">-->
+
+<!--    &lt;!&ndash;配置spring创建容器时要扫描的包&ndash;&gt;-->
+<!--    <context:component-scan base-package="com.example"></context:component-scan>-->
+
+<!--    &lt;!&ndash;配置spring开启注解aop的支持&ndash;&gt;-->
+<!--    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
+
+<!--    &lt;!&ndash;spring中基于xml的aop配置步骤-->
+<!--        1.把通知Bean交给spring管理-->
+<!--        2.aop:config标签表明开始aop配置-->
+<!--        3.aop:aspect标签表明配置切面-->
+<!--            id：切面的唯一标识-->
+<!--            ref：通知Bean的id-->
+<!--        4.在aop:aspect标签内部配置通知的类型-->
+<!--            aop:before:通知类型，前置通知-->
+<!--                method：指定通知的方法-->
+<!--                pointcut:指定切入点表达式,指对业务层哪些方法增强&ndash;&gt;-->
+
+<!--    <aop:config>-->
+<!--        <aop:aspect id="logAdvice" ref="logger">-->
+<!--            <aop:before method="beforeLog" pointcut-ref="pt1"></aop:before>-->
+<!--            <aop:after-returning method="afterReturningLog" pointcut-ref="pt1"></aop:after-returning>-->
+<!--            <aop:after-throwing method="afterThrowingLog" pointcut-ref="pt1"></aop:after-throwing>-->
+<!--            <aop:after method="afterLog" pointcut-ref="pt1"></aop:after>-->
+<!--            <aop:around method="aroundLog" pointcut-ref="pt1"></aop:around>-->
+<!--            <aop:pointcut id="pt1" expression="execution(* com.example.service.impl.*.*(..))"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+<!--</beans>-->

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--spring对Bean的管理
+        1.创建Bean的三种方式
+        2.Bean对象的作用范围
+        3.Bean对象的生命周期
+    -->
+
+    <!--创建Bean的三种方式-->
+    <!--第一种方式:使用默认构造函数创建
+        在spring的配置文件使用bean标签,配以id和class属性后，且没有其他属性和标签时，
+        采用的就是摸摸人构造函数创建bean对象，此时如果类中没有默认构造函数，对象则无法创建-->
+<!--    <bean id="accountService" class="com.example.demo.service.impl.AccountServiceImpl"></bean>-->
+
+
+    <!--第二种方式：使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）-->
+<!--    <bean id="instanceFactory" class="com.example.demo.factory.BeanFactory"></bean>-->
+<!--    <bean id="accountService" factory-bean="instanceFactory" factory-method="getInstanceFactory"></bean>-->
+
+    <!--第三种方式:使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入spring容器）-->
+<!--    <bean id="accountService" class="com.example.demo.factory.StaticFactory" factory-method="getInstanceFactory"></bean>-->
+
+
+    <!--bean的作用范围调整
+        bean标签的scope属性
+            作用:用于指定bean的作用范围
+            取值:
+                singleton:单例（默认）
+                prototype:多例
+                request：作用于web的请求范围
+                session:作用于web的会话范围
+                global-session:作用于集群环境的会话范围-->
+
+    <!--bean对象的生命周期
+        单例对象
+            单例对象的生命周期和容器相同
+        多例对象
+            出生:当使用对象时，spring才创建对象
+            活着：对象在使用就一直活着
+            死亡：对象长期未使用且没有其他对象引用，由java垃圾回收器回收
+        -->
+
+<!--    <bean id="accountService" class="com.example.demo.service.impl.AccountServiceImpl" scope="singleton" init-method="init" destroy-method="destroy"></bean>-->
+
+    <!--
+        依赖注入
+            能注入的数据:有三类
+                基本类型和String
+                其他bean类型
+                复杂类型/集合类型
+             注入的方式:有三种
+                1.使用构造函数
+                2.使用set方法
+                3.使用注解-->
+
+    <!--构造函数注入
+        constructor-arg
+        属性：
+            type
+            index
+            name
+            value
+            ref-->
+
+    <bean id="accountService" class="com.example.demo.service.impl.AccountServiceImpl" init-method="init" destroy-method="destroy">
+        <constructor-arg name="name" value="嘎嘎嘎"></constructor-arg>
+    </bean>
+
+    <!--set方法注入
+        property
+        属性
+            name
+            value
+            ref-->
+<!--    <bean id="x" class="com.example.demo.service.impl.AccountServiceImpl">-->
+<!--        <property name="" value=""></property>-->
+<!--    </bean>-->
+
+    <!--复杂类型注入-->
+<!--    <bean>-->
+<!--        <property name="">-->
+<!--            <array></array>-->
+<!--        </property>-->
+<!--    </bean>-->
+</beans>
